@@ -1,0 +1,40 @@
+﻿﻿﻿@{
+ViewData["Title"] = "Feedback Form";
+}
+
+<h2>Feedback Form</h2>
+
+<form asp-action="Submit" method="post">
+    <!-- Query string UserId -->
+    <p><strong>User ID:</strong> @ViewBag.UserId</p>
+    <input type="hidden" name="userId" value="@ViewBag.UserId" />
+
+    <!-- Hidden field for Feedback ID -->
+    <input type="hidden" name="feedbackId" value="@ViewBag.FeedbackId" />
+
+    <!-- Theme preference using cookies -->
+    <label>Select Theme:</label>
+    <select name="theme">
+        @if (ViewBag.Theme == "light")
+        {
+            <option value="light" selected="selected">Light</option>
+            <option value="dark">Dark</option>
+        }
+        else
+        {
+            <option value="light">Light</option>
+            <option value="dark" selected="selected">Dark</option>
+        }
+    </select>
+
+
+
+
+
+    <br /><br />
+    <label>Your Feedback:</label>
+    <textarea name="feedback" rows="4" cols="50"></textarea>
+
+    <br /><br />
+    <button type="submit">Submit Feedback</button>
+</form>
